@@ -1,10 +1,11 @@
 export default function guardrail(mathFunction) {
   let queue = []
   try {
-    queue.push(mathFunction(), 'Guardrail was processed')
+    queue.push(mathFunction())
   } catch (error) {
-    queue.push(String(error), 'Guardrail was processed')
+    queue.push(String(error))
   } finally {
-    return queue
+    queue.push('Guardrail was processed')
   }
+  return queue;
 }

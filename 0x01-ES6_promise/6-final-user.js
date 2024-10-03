@@ -9,7 +9,7 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
         value: result.values
       }
     ]
-  }).catch(() => {
+  }).catch((result) => {
     [
       {
         status: `<${result.status}>`,
