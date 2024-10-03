@@ -5,14 +5,14 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
   return Promise.allSettled([signUpUser(firstName, lastName), uploadPhoto(fileName)]).then((result) => {
     [
       {
-        status: `<${result.status}>`,
-        value: result.values
+        status: result.status,
+        value: result.value
       }
     ]
   }).catch((result) => {
     [
       {
-        status: `<${result.status}>`,
+        status: result.status,
         value: result.reason
       }
     ]
