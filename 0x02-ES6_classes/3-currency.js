@@ -1,14 +1,26 @@
 export default class Currency {
   constructor(code, name) {
-    this._code = code;
-    this._name = name;
-    return new Proxy(this, {
-      get: (obj, key) => Reflect.get(obj, key),
-      set: (obj, key, val) => Reflect.set(obj, key, val),
-    });
+    this.code = code;
+    this.name = name;
+  }
+
+  set code(value) {
+    this._code = value;
+  }
+
+  set name(value) {
+    this._name = value;
+  }
+
+  get code() {
+    return this._code;
+  }
+
+  get name() {
+    return this._name;
   }
 
   displayFullCurrency() {
-    return `${this._name} (${this._code})`;
+    return `${this.name} (${this.code})`;
   }
 }

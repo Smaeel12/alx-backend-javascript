@@ -1,39 +1,34 @@
-export default class HolbertonCourse {
+export default class HolbertonClass {
   constructor(name, length, students) {
-    this._name = typeof name === 'string' ? name : (() => { throw new TypeError('Name must be a string'); })();
-    this._length = typeof length === 'number' ? length : (() => { throw new TypeError('Length must be a number'); })();
-    this._students = Array.isArray(students) && students.every((val) => typeof val === 'string')
-      ? students
-      : (() => { throw new TypeError('Students must be an array of strings'); })();
+    this.name = name;
+    this.length = length;
+    this.students = students;
+  }
 
-    return new Proxy(this, {
-      get: (object, key) => {
-        if (key === 'name') {
-          return object._name;
-        } if (key === 'length') {
-          return object._length;
-        } if (key === 'students') {
-          return object._students;
-        }
-        return undefined;
-      },
-      set: (object, key, value) => {
-        const types = {
-          name: 'a string',
-          length: 'a number',
-          students: 'an array of strings',
-        };
-        if (key === 'name' && typeof value === 'string') {
-          object._name = value;
-        } else if (key === 'length' && typeof value === 'number') {
-          object._length = value;
-        } else if (key === 'students' && Array.isArray(value) && value.every((val) => typeof val === 'string')) {
-          object._students = value;
-        } else {
-          throw new TypeError(`${key.charAt(0).toUpperCase() + key.slice(1)} must be ${types[key]}`);
-        }
-        return true;
-      },
-    });
+  set name(value) {
+    if (typeof value !== 'string') throw new TypeError('Name must be a string');
+    else this._name = value;
+  }
+
+  set length(value) {
+    if (typeof value !== 'number') throw new TypeError('Length must be a number');
+    else this._length = value;
+  }
+
+  set students(value) {
+    if (!Array.isArray(value) || !value.every((item) => typeof item === 'string')) throw new TypeError('Students must be an array of strings');
+    else this._students = value;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  get length() {
+    return this._length;
+  }
+
+  get students() {
+    return this._students;
   }
 }

@@ -5,10 +5,8 @@ export default class EVCar extends Car {
     super(brand, motor, color);
     this._range = range;
   }
-
+  /* eslint-disable */
   cloneCar() {
-    if (this instanceof EVCar) {
-      return new Car();
-    }
+    return new Car();
   }
 }
