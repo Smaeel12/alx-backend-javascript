@@ -1,2 +1,2 @@
 #!/usr/bin/node
-export default (arr) => Array.isArray(arr) ? arr.map(obj => obj.id) : []
+export default (arr) => (Array.isArray(arr) ? arr.map((obj) => obj.id) : []);
