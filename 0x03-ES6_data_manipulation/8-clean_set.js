@@ -2,7 +2,7 @@
 export default (set, startString) => {
   if (!startString
     || !Array.from(set).some((v) => v.startsWith(startString))
-    || (!(startString instanceof String))) {
+    || (!(typeof (startString) === 'string'))) {
     return '';
   }
   const strs = Array.from(set)
