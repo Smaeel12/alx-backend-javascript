@@ -1,11 +1,6 @@
 #!/usr/bin/node
-export default (groceriesMap) => {
-  if (!(groceriesMap instanceof Map)) {
-    throw new Error('Cannot process');
-  }
-  for (const [item, quantity] of groceriesMap) {
-    if (quantity === 1) {
-      groceriesMap.set(item, 100);
-    }
-  }
-};
+export default (map) => {
+  if (!(map instanceof Map))
+    throw Error('Cannot process')
+  map.forEach((k, v) => { if (k === 1) map.set(v, 100) })
+}

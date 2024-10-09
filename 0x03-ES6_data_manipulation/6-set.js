@@ -1,2 +1,2 @@
 #!/usr/bin/node
-export default (array) => new Set(array);
+export default (arr) => new Set(arr)
