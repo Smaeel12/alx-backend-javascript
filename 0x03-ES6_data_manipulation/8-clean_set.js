@@ -1,6 +1,6 @@
 export default (set, startString) => {
-  const newSet = Array.from(set)
-    .filter((v) => v.startsWith(startString))
+  const arr = Array.from(set).filter((v) => v);
+  const newArr = arr.filter((v) => v.startsWith(startString))
     .map((v) => v.substr(startString.length));
-  return Array.from(set).every((v, i) => v === newSet[i]) ? '' : newSet.join('-');
+  return arr.every((v, i) => v === newArr[i]) ? '' : newArr.join('-');
 };
