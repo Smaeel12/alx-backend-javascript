@@ -1,4 +1,3 @@
-#!/usr/bin/node
 export default () => new Map([
   ['Apples', 10],
   ['Tomatoes', 10],

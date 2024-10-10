@@ -1,12 +1,6 @@
-#!/usr/bin/node
 export default (set, startString) => {
-  if (!startString
-    || !Array.from(set).some((v) => v.startsWith(startString))
-    || (!(typeof (startString) === 'string'))) {
-    return '';
-  }
-  const strs = Array.from(set)
-    .map((v) => (v ? v.slice(startString.length) : undefined))
-    .filter((x) => x);
-  return strs.join('-');
+  const newSet = Array.from(set)
+    .filter((v) => v.startsWith(startString))
+    .map((v) => v.substr(startString.length));
+  return Array.from(set).every((v, i) => v === newSet[i]) ? '' : newSet.join('-');
 };

@@ -1,5 +1,4 @@
-#!/usr/bin/node
 export default (map) => {
   if (!(map instanceof Map)) throw Error('Cannot process');
-  map.forEach((k, v) => { if (k === 1) map.set(v, 100); });
+  map.forEach((v, k) => (v === 1 ? map.set(k, 100) : v));
 };

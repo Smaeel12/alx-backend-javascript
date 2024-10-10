@@ -1,13 +1,11 @@
-#!/usr/bin/node
+/* eslint no-param-reassign: "error" */
 export default (list, city, newGrades) => {
-  const ids = newGrades.map((v) => v.studentId);
+  const ids = newGrades.map((g) => g.studentId);
   return list.filter((v) => v.location === city)
     .map((v) => {
-      if (ids.includes(v.id)) {
-        v.grade = newGrades[ids.indexOf(v.id)].grade; // eslint-disable-line no-param-reassign
-      } else {
-        v.grade = 'N/A'; // eslint-disable-line no-param-reassign
-      }
+      const idx = ids.indexOf(v.id);
+      if (idx !== -1) v.grade = newGrades[idx].grade;
+      else v.grade = 'N/A';
       return v;
     });
 };
